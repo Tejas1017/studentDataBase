@@ -27,8 +27,8 @@ int main(){
                         break;
              case 'd':deleteRecord(&headPtr);break;
              case 'D':deleteRecord(&headPtr);break;
-            // case 'm':
-            // case 'M':
+             case 'm':modifyData(headPtr);break;
+             case 'M':modifyData(headPtr);break;
             // case 'v':
             // case 'V':
             // case 'e':
@@ -169,7 +169,29 @@ void printRecord(SLL *ptr){
         cout<<ptr->rollNo<<" "<<ptr->name<<" "<<ptr->precent<<endl;
         ptr=ptr->next;
     }
-
+}
+void modifyWithRollNumber(SLL *ptr){
+    char name[50];
+    int percentAge;
+    if(ptr==0){
+        cout<<"No records present"<<endl;
+        return;
+    }
+    int rollNumber;
+    SLL *mod=ptr;
+    cout<<"Enter the roll number which you want to modify"<<endl;
+    cin>>rollNumber;
+    while(mod && mod->rollNo!=rollNumber){
+        mod=mod->next;
+    }
+    cout<<"Now enter the modifed data"<<endl;
+    cout<<"Enter name"<<endl;
+    cin>>name;
+    cout<<"Enter new percent age"<<endl;
+    cin>>percentAge;
+    mod->precent=percentAge;
+    strcpy(mod->name,name);
+    cout<<"Your data have been modifyed"<<endl;
 }
 void deleteRecord(SLL **ptr){
     char op;
@@ -182,5 +204,19 @@ void deleteRecord(SLL **ptr){
         case 'R': deleteAccordingToRollNo(ptr);break;
         case 'n': deleteAccordingToName(ptr);break;
         case 'N': deleteAccordingToName(ptr);break;
+    }
+}
+void modifyData(SLL *ptr){
+    cout<<"How would you like to modify data :"<<endl;
+    cout<<"according: i)Roll number "<<endl;
+    cout<<"according: ii)Name "<<endl;
+    cout<<"acccording: iii)Percentage"<<endl;
+    int op;
+    cin>>op;
+    switch(op){
+        case 1:modifyWithRollNumber(ptr);break;
+        //case 2:modifyWithName(ptr);break;
+        //case 3:modifyWithPercent(ptr);break;
+        default:cout<<"Enter valid input"<<endl;
     }
 }

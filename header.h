@@ -14,3 +14,7 @@ void printRecord(SLL *);
 void deleteRecord(SLL **);
 void deleteAccordingToRollNo(SLL **);
 void deleteAccordingToName(SLL **);
+void modifyData(SLL *);
+void modifyWithRollNumber(SLL *);
+void modifyWithName(SLL *);
+void modifyWithPercent(SLL *);
